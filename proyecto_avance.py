@@ -162,7 +162,7 @@ def menu():
             ¡Buena suerte!""")
             input('\nPresione enter para volver al menú principal. ')  
         elif entrada == '5':
-            print('\nCreado por:\nAnfernhy José Berrocal Rojas\nEsteban Josué Román Oviedo\nYurguen Chacón\nAño 2024')
+            print('\nCreado por:\nAnfernhy José Berrocal Rojas\nEsteban Josué Román Oviedo\nYurguen Steve Chacón Solórzano\nAño 2024')
             input('\nPresione enter para volver al menú principal. ')
         elif entrada == '6':
             print('\nGracias por jugar. ')
