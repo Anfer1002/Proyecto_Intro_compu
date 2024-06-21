@@ -70,9 +70,8 @@ def menu():
         if entrada == '1':                      
             letras_acertadas = 0
             conteo_letras = ''
-            encendido = True
             print(", ".join(map(str,adivinar)).replace(",","",-1))
-            while encendido:
+            while True:
                 if vidas < 1:
                     perdidas += 1
                     print('\nTe quedaste sin vidas\nLa palabra era: ', elegida)
@@ -88,7 +87,7 @@ def menu():
                         elegida = selecc_elegida(adivinar, palabras, nuevo_random)
                         print(", ".join(map(str,adivinar)).replace(",","",-1))
                     else:
-                        encendido = False
+                        break
                     
                 elif letras_acertadas == len(elegida):
                     ganadas += 1
@@ -103,7 +102,7 @@ def menu():
                         elegida = selecc_elegida(adivinar, palabras, nuevo_random)
                         print(", ".join(map(str,adivinar)).replace(",","",-1))
                     else:
-                        encendido = False
+                        break
 
                 else:
                     letra = str(input('\nIngrese la letra que quere comprobar o ingrese 6 para salir: ')).upper()
@@ -115,7 +114,7 @@ def menu():
                         letras_acertadas += mostrar(elegida, letra, adivinar)
                         conteo_letras += letra
                     elif letra == '6':
-                        encendido = False
+                        break
                     else:
                         vidas -= 1
                         conteo_letras += letra
@@ -167,6 +166,6 @@ def menu():
             input('\nPresione enter para volver al menú principal. ')
         elif entrada == '6':
             print('\nGracias por jugar. ')
-            ciclo = False 
+            break
 
 menu()
