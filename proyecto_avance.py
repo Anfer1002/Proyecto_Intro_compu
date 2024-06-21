@@ -63,9 +63,8 @@ def menu():
     max_lista = sacar_palabras(random_txt, palabras)
     random_num = random.randint(0, max_lista)
     elegida = selecc_elegida(adivinar, palabras, random_num)
-    
-    ciclo = True
-    while ciclo:
+
+    while True:
         entrada = str(input('\nSeleccione una opción\n1. Jugar\n2. Cambiar parámetros\n3. Mostrar resultados\n4. Ayuda\n5. Acerca de...\n6. Salir\nOpción: '))
         
         if entrada == '1':                      
