@@ -2,6 +2,7 @@
 
 import random
 
+
 def mostrar(palabra, letra, adivinar):
     #Esta función modifica la lista "adivinar" cuando la letra dada por el usuario se encuentra dentro de la palabra por adivinar y muestra el progreso de la palabra logrado por el usuario.
     #Recibe la palabra por adivinar, la letra ingresada por el usuario y la lista con espacios que se muestra al usuario. Retorna la cantidad de veces que "letra" está contenida dentro de la palabra por adivinar.
