@@ -66,7 +66,9 @@ def menu():
                         letras_acertadas = 0
                         conteo_letras = ''
                         nuevo_random = random.randint(0, max_lista)
-                        elegida = selecc_elegida(adivinar, palabras, nuevo_random)                 
+                        elegida = selecc_elegida(adivinar, palabras, nuevo_random)
+                        vidas = 10
+                        print('Vidas establecidas en', vidas)            
                     else:
                         encendido = False
                     

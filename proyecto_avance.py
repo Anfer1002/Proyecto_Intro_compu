@@ -143,11 +143,12 @@ def menu():
             elif opcion_2 == '3':
                 vidas = 5
             else:
-                print('\n:Las vidas se mantendrán en', vidas)                        
+                print('\n:Las vidas se mantendrán en', vidas)
+                 
         elif entrada == '3':
             print('\nHas ganado', ganadas, 'partidas.\nHas perdido', perdidas, 'partidas.')
             input('\nPresione enter para volver al menú principal. ')
-            encendido = True
+
         elif entrada == '4':
             print("""\nEste es un juego tipo ahorcado. Ten en cuenta las siguientes indicaciones:
             
@@ -162,12 +163,15 @@ def menu():
             - Si las vidas llegan a cero, perderás la partida.
             
             ¡Buena suerte!""")
-            input('\nPresione enter para volver al menú principal. ')  
+            input('\nPresione enter para volver al menú principal. ')
+
         elif entrada == '5':
             print('\nCreado por:\nAnfernhy José Berrocal Rojas\nEsteban Josué Román Oviedo\nYurguen Steve Chacón Solórzano\nAño 2024')
             input('\nPresione enter para volver al menú principal. ')
+
         elif entrada == '6':
             print('\nGracias por jugar. ')
             ciclo = False 
 
+#Este es el programa principal
 menu()
