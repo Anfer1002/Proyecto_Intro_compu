@@ -49,6 +49,10 @@ def modificar_adivinar(palabra, letra, adivinar):
     return letras_acertadas
 
 def juego(adivinar, elegida):
+    #Esta función se encarga de prefuntar por una letra para adivinar la palabra. Luego determina si la entrada es correcta, incorrecta o inválida.
+    #Recibe la lista con espacios que se muestra al usuario y la lista con palabras extraídas del .txt.
+    #Retorna valores False o True para determinar si el ciclo debe continuar
+
     letra = str(input('\nIngrese la letra que quere comprobar o ingrese 6 para salir: ')).upper()
     os.system('cls')
 
@@ -57,11 +61,11 @@ def juego(adivinar, elegida):
     global vidas
 
     if len(letra)>1:
-        print('\nEntrada inválida.')
+        print('Entrada inválida.')
         return True
                     
     elif letra in conteo_letras:
-        print('\nEsa letra ya se ha utilizado.')
+        print('Esa letra ya se ha utilizado.')
         return True
                     
     elif letra in elegida:
@@ -79,54 +83,30 @@ def juego(adivinar, elegida):
         print(letra, 'no estaba en la palabra. Ahora tienes',vidas,'vidas.')
         return True
 
-def ganar(adivinar, palabras, tema):
+def ganar_perder(adivinar, palabras, tema):
+    #Esta funcion se ejecuta cuando el usuario píerde o gana. Resetea los valores y selecciona una nueva palabra para adivinar.
+    #Recibe la lista con espacios que se muestra al usuario, la lista con palabras extraídas del .txt y un número para elegir el tema.
+    #Retorna valores False o True para determinar si el ciclo debe continuar
 
-    
     global letras_acertadas
     global conteo_letras          
     global vidas
-    global ganadas
-
-    ganadas += 1
-    print('\n¡Palabra acertada!\nHas ganado', ganadas, 'partidas.\nHas perdido', perdidas, 'partidas.')
+    global elegida
+    
     seguir = input('\nSi deseas sequir jugando presiona 1 o enter para salir\nOpción: ')
+    os.system('cls')
     
     if seguir == '1':
         adivinar.clear()
         letras_acertadas = 0
         conteo_letras = ''
         vidas = 10
-        print('Vidas establecidas en', vidas)
+        print('Vidas establecidas en', vidas,)
         elegida = selecc_elegida(adivinar, palabras, tema)
         return True
                         
     else:
-         os.system('cls')
          return False
-
-def perder(adivinar, palabras, tema):
-
-    global letras_acertadas
-    global conteo_letras          
-    global vidas
-    global perdidas
-
-    perdidas += 1
-    print('\nTe quedaste sin vidas\nLa palabra era: ', elegida, '\nHas ganado', ganadas, 'partidas.\nHas perdido', perdidas, 'partidas.')
-    seguir = input('\nSi deseas sequir jugando presiona 1 o enter para salir\nOpción: ')
-                
-    if seguir == '1':
-        adivinar.clear()
-        letras_acertadas = 0
-        conteo_letras = ''
-        vidas = 10
-        print('Vidas establecidas en', vidas)
-        elegida = selecc_elegida(adivinar, palabras, tema)
-        return False
-
-    else:
-        os.system('cls')
-        return False
 
 def menu():
     #Esta función contiene el menú y es el "cerebro" del programa. No recibe parámetros y no retorna valores.
@@ -134,12 +114,11 @@ def menu():
     palabras = []
     global vidas
     vidas = 10
-    global ganadas
     ganadas = 0
-    global perdidas
     perdidas = 0
     sacar_palabras(palabras)
     tema = random.randint(0,4)
+    global elegida
     elegida = selecc_elegida(adivinar, palabras, tema)
     
     ciclo = True
@@ -156,13 +135,17 @@ def menu():
             
             encendido = True
             while encendido:
-                print(", ".join(map(str,adivinar)).replace(",","",-1))
+                print('\n', ", ".join(map(str,adivinar)).replace(",","",-1))
                 
                 if vidas < 1:
-                    encendido = perder(adivinar, palabras, tema)
+                    perdidas += 1
+                    print('\nTe quedaste sin vidas\nLa palabra era: ', elegida, '\nHas ganado', ganadas, 'partidas.\nHas perdido', perdidas, 'partidas.')
+                    encendido = ganar_perder(adivinar, palabras, tema)
                     
                 elif letras_acertadas == len(elegida):
-                    encendido = ganar(adivinar, palabras, tema)
+                    ganadas += 1
+                    print('\n¡Palabra acertada!\nHas ganado', ganadas, 'partidas.\nHas perdido', perdidas, 'partidas.')
+                    encendido = ganar_perder(adivinar, palabras, tema)
 
                 else:
                     encendido = juego(adivinar, elegida)
@@ -217,5 +200,5 @@ def menu():
             print('\nGracias por jugar. ')
             ciclo = False 
 
-#Este es el programa principal
+#Este es el llamado de la función principal
 menu()

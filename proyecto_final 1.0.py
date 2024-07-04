@@ -47,10 +47,6 @@ def modificar_adivinar(palabra, letra, adivinar):
         posicion += 1
     return letras_acertadas
 
-
-
-
-
 def menu():
     #Esta función contiene el menú y es el "cerebro" del programa. No recibe parámetros y no retorna valores.
     adivinar = []
