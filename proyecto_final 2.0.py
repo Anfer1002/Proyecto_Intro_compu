@@ -106,6 +106,7 @@ def ganar_perder(adivinar, palabras, tema):
         return True
                         
     else:
+         elegida = selecc_elegida(adivinar, palabras, opcion_1=4)
          return False
 
 def menu():
